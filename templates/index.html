@@ -1,0 +1,96 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Skin Analyzer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
+    <style>
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            margin: 10px;
+        }
+        .score-circle canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .score-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-8">AI Skin Analyzer</h1>
+        
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div class="steps mb-8">
+                <h2 class="text-2xl font-semibold mb-4">3 Easy Steps</h2>
+                <div class="flex flex-col space-y-4">
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center mr-4">1</span>
+                        <span>Choose Selfie or Live mode</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center mr-4">2</span>
+                        <span>AI analyzes 15 skin conditions</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center mr-4">3</span>
+                        <span>Get your personalized skin analysis</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="capture-section mb-8">
+                <div class="flex justify-center space-x-4 mb-4">
+                    <button id="selfieMode" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Selfie Mode</button>
+                    <button id="liveMode" class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Live Mode</button>
+                </div>
+                <div id="cameraGuide" class="hidden text-center mb-4">
+                    <p class="text-gray-600">Position your face in the center and ensure good lighting</p>
+                </div>
+                <div class="relative">
+                    <video id="video" class="hidden w-full rounded-lg" autoplay></video>
+                    <canvas id="previewCanvas" class="hidden w-full rounded-lg"></canvas>
+                    <input type="file" id="fileInput" class="hidden" accept="image/*">
+                </div>
+                <button id="capture" class="hidden w-full mt-4 px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Capture & Analyze</button>
+            </div>
+
+            <div id="results" class="hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Analysis Results</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-lg">Predicted Age: <span id="predictedAge" class="font-bold"></span></p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-lg">Face Type: <span id="faceType" class="font-bold"></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="scoreCircles"></div>
+                
+                <div class="mt-8">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>

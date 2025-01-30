@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.metric-circle {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    margin: 10px;
+}
+
+.metric-circle canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.metric-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.loading {
+    position: relative;
+    padding-left: 25px;
+}
+
+.loading:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-top-color: #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
