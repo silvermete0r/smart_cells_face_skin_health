@@ -2,6 +2,10 @@
 
 A simple web application that analyzes facial skin using AI to provide insights into various skin metrics.
 
+**Students:** Zhumabek Niyazbek, Darkhan Sabyrkhan, Mukhammed Kuanyshbek (9th grade Skillset students)
+
+**Supervisor:** mr. Arman
+
 ## Features
 - Upload a selfie or use live mode for face capture.
 - AI-driven skin analysis with metrics displayed as score circles and a radar chart.
