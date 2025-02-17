@@ -1,7 +1,7 @@
 # AI Skin Analyzer
 
-A simple web application that analyzes facial skin using AI to provide insights into various skin metrics.
-
+A simple web application that analyzes facial skin using AI to provide insights into various skin metrics. Based on the results of facial skin analysis, the program automatically turns on the Arduino microcontroller to place the tray on the right shelves from where you can get the necessary cosmetics recommended by the AI assistant.
+ 
 **Students:** Zhumabek Niyazbek, Darkhan Sabyrkhan, Mukhammed Kuanyshbek (9th grade Skillset students)
 
 **Supervisor:** mr. Arman
